@@ -1,0 +1,42 @@
+<mujoco model="ur5e">
+    <actuator>
+        <!-- Physical limits of the actuator. -->
+        <!-- Values taken from https://www.universal-robots.com/articles/ur-articles/max-joint-torques/ -->
+        <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="shoulder_pan_joint" name="torq_j1"/>
+    </actuator>
+    <asset>
+        <mesh name="base" file="meshes/base.stl" />
+        <mesh name="shoulder" file="meshes/shoulder.stl" />
+
+        <mesh name="base_vis" file="meshes/base_vis.stl" />
+        <mesh name="shoulder_vis" file="meshes/shoulder_vis.stl" />
+
+        <!-- <mesh name="wristcamera_vis" file="meshes/wristcamera_vis1.stl" scale="0.001 0.001 0.001"/> -->
+    </asset>
+    <worldbody>
+        <body name="base" pos="0 0 0">
+            <!-- robot view -->
+            <camera mode="fixed" name="robotview" pos="1.0 0 0.4" quat="0.653 0.271 0.271 0.653"/>
+            <inertial diaginertia="0 0 0" mass="0" pos="0 0 0"/>
+            <!-- mount attached here -->
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="base_vis" />
+            <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="base" name="base_col"/>
+            <body name="shoulder_link" pos="0 0 0.163"> 
+                <inertial pos="0 0 0" mass="3.7" diaginertia="0.0102675 0.0102675 0.00666" />
+                <joint name="shoulder_pan_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="0.001" frictionloss="0.01" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="shoulder_vis" name="shoulder_visual" />
+                <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="shoulder" name="shoulder_col" />
+                <geom pos="0 0.15 0" quat="0 0 0.707 0.707" rgba="0.7 0 0 1" size="0.05 0.15" type="cylinder" name="point_vis" group="1" />
+
+                <geom pos="0 0.15 0" quat="0 0 0.707 0.707" rgba="0.7 0.7 0.7 1" size="0.05 0.15" type="cylinder" name="point_col"/>
+
+                <body name="upper_arm_link" pos="0 0.138 0" quat="0.707107 0 0.707107 0">
+                    <body name="right_hand" pos="0 0.138 0"  quat="0.707 -0.707 0 0" >
+                        <!-- <geom name="right_hand_link" pos="0 0.138 0" quat="0.707107 0 0.707107 0" rgba="0 0 0.7 1" size="0.05 0.05" type="cylinder" group="1"> -->
+                    </body>
+                </body>
+            </body>
+                
+        </body>
+    </worldbody>
+</mujoco>

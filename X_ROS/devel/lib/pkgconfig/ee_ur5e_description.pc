@@ -1,0 +1,8 @@
+prefix=/home/prakash/CosMic_RAYs_X-main/X_ROS/devel
+
+Name: ee_ur5e_description
+Description: Description of ee_ur5e_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

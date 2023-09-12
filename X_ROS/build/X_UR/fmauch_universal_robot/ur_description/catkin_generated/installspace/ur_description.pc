@@ -1,0 +1,8 @@
+prefix=/home/prakash/CosMic_RAYs_X-main/X_ROS/install
+
+Name: ur_description
+Description: Description of ur_description
+Version: 1.2.5
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

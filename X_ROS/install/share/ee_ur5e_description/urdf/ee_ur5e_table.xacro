@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<robot name="ur5_gr" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+  <xacro:include filename="$(find ee_ur5e_description)/urdf/inc/ur5e_macro.xacro"/>
+  <xacro:include filename="$(find robotiq_2f_140_gripper_visualization)/urdf/robotiq_arg2f_140_model_macro.xacro" />
+
+  <xacro:ur5e_robot prefix=""/>
+
+
+  <link name="wrist_camera_link">
+    <visual>
+      <origin xyz="0 0 0.0112" rpy="0 0 0"/>
+      <geometry>
+          <!-- <cylinder length="0.0224" radius="0.036"/> -->
+        <mesh filename="package://ee_ur5e_description/meshes/ur5e/visual/wristcamera_vis.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="wrist_color">
+        <color rgba="0.047 0.047 0.047 0.9"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+      <geometry>
+          <cylinder length="0.0224" radius="0.036"/>
+      </geometry>
+    </collision> -->
+    <!-- <xacro:cylinder_inertial radius="${shoulder_inertia_radius}" length="${shoulder_inertia_length}" mass="${shoulder_mass}">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:cylinder_inertial> -->
+  </link>
+
+    <link name="d435_link">
+    <visual>
+      <origin xyz="0 0 0.0112" rpy="0 0 0"/>
+      <geometry>
+          <mesh filename="package://ee_ur5e_description/meshes/ur5e/visual/holdD435_vis.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="d435i_color">
+        <color rgba="0.80 0.80 0.80 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+      <geometry>
+           <mesh filename="package://ee_ur5e_description/meshes/ur5e/collision/holdD435.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision> -->
+    <!-- <xacro:cylinder_inertial radius="${shoulder_inertia_radius}" length="${shoulder_inertia_length}" mass="${shoulder_mass}">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:cylinder_inertial> -->
+  </link>
+
+
+  <link name="Table_link">
+    <visual>
+      <origin xyz="0 0 0.46" rpy="0 0 0"/>
+      <geometry>
+          <box size="1.82 1.22 0.935"/>
+      </geometry>
+      <material name="table_color">
+        <color rgba="0.156 0.392 0.282 0.95"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.92" rpy="0 0 0"/>
+      <geometry>
+           <box size="1.82 1.22 0.015"/>
+      </geometry>
+    </collision> -->
+    <!-- <xacro:cylinder_inertial radius="${shoulder_inertia_radius}" length="${shoulder_inertia_length}" mass="${shoulder_mass}">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:cylinder_inertial> -->
+  </link>
+
+    <link name="Mount_link">
+    <visual>
+      <origin xyz="0 0 0.46" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.5 0.5 0.935"/>
+      </geometry>
+      <material name="mount_color">
+        <color rgba="0.76 0.76 0.76 0.95"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.92" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.5 0.5 0.935"/>
+      </geometry>
+    </collision> -->
+    <!-- <xacro:cylinder_inertial radius="${shoulder_inertia_radius}" length="${shoulder_inertia_length}" mass="${shoulder_mass}">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:cylinder_inertial> -->
+  </link>
+  
+
+  <joint name="wristcam_2_ur5_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="tool0"/>
+      <child link="wrist_camera_link"/>
+  </joint> 
+
+
+  <joint name="gripper_2_wristcam_joint" type="fixed">
+      <origin xyz="0 0 0.024" rpy="0 0 0" />
+      <parent link="wrist_camera_link"/>
+      <child link="gripper140robotiq_arg2f_base_link"/>
+  </joint> 
+
+  <joint name="d435_joint" type="fixed">
+      <origin xyz="0 0 -0.04" rpy="0 0 0" />
+      <parent link="tool0"/>
+      <child link="d435_link"/>
+  </joint> 
+
+  <joint name="Table_base" type="fixed">
+      <origin xyz="0 0.67 0" rpy="0 0 0" />
+      <parent link="Table_link"/>
+      <child link="Mount_link"/>
+  </joint> 
+
+  <joint name="Mount_ur5e_base" type="fixed">
+      <origin xyz="0 0  0.935" rpy="0 0 0" />
+      <parent link="Mount_link"/>
+      <child link="base_link"/>
+  </joint> 
+
+
+
+  <xacro:robotiq_arg2f_140 prefix="gripper140"/>
+
+  
+
+</robot>
+
+
+

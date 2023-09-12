@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ee_ur5e_robot">
+  <!--
+    This file is a program descripe ur5e in EE lab. Which include Robotiq gripper, 
+    wrist camera, and self linked D435i depth camera. 
+
+    This mode build on a EE Lab same mount and with the same looking table.
+
+    Connect with Hengning.Xu@uon.edu.au if there are problems.
+  -->
+  <xacro:include filename="$(find ee_ur5e_description)/urdf/inc/ur5e_macro.xacro"/>
+
+  <xacro:ur5e_robot prefix="" />
+
+  
+</robot>

@@ -1,0 +1,8 @@
+prefix=/home/prakash/CosMic_RAYs_X-main/X_ROS/install
+
+Name: ee_ur5e_gazebo
+Description: Description of ee_ur5e_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot name="ur5_gr" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find ee_ur5e_description)/urdf/inc/ur5e_macro.xacro"/>
+  <xacro:include filename="$(find robotiq_2f_140_gripper_visualization)/urdf/robotiq_arg2f_140_model_macro.xacro" />
+
+  <xacro:ur5e_robot prefix=""/>
+
+  <joint name="wristcam_2_ur5_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="tool0"/>
+      <child link="gripper140robotiq_arg2f_base_link"/>
+  </joint> 
+
+  <xacro:robotiq_arg2f_140 prefix="gripper140"/>
+
+</robot>
+
+
+

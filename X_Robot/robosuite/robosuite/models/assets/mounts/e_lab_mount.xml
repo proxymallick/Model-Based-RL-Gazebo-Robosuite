@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<mujoco>
+    <!-- <compiler angle="radian" coordinate="local" inertiafromgeom="true" settotalmass="25" meshdir="/home/xhnfly/RL_UR5e_ws/robosuite/models/assets/mounts/meshes/e_lab_mount" /> -->
+    <asset>
+        <mesh name="e_lab_mount" file="meshes/e_lab_mount/e_lab_mount.stl" scale="0.001 0.001 0.001"/>
+        <!-- <mesh name="pedestal" file="meshes/rethink_minimal_mount/pedestal_collision.stl" /> -->
+        <!--  -->
+    </asset>
+
+    <worldbody>
+        <body name="base" pos="0 0 0">
+            <body name="e_lab_mount" pos="0 0 0">
+                <inertial diaginertia="6.0869 5.81635 4.20915" mass="60.864" pos="0 0 0" quat="0.659267 -0.259505 -0.260945 0.655692"/>
+                <geom conaffinity="0" contype="0" group="2" mesh="e_lab_mount" type="mesh" name="e_lab_mount_vis" rgba="0.7 0.7 0.7 1" />
+                <geom pos="0.38 0.3 0.455" size="0.38 0.3 0.455" type="box" name="collision"/>
+                <geom conaffinity="0" contype="0" group="2" pos="0.43 0.175 0.915" size="0.1125 0.1125 0.005" type="box" name="pad" rgba="0.7 0.7 0.7 1"/>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>
+
